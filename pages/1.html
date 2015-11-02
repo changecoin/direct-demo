@@ -67,21 +67,18 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-8">
-          <h3>How it works:</h3>
-          <p>
-            On page load, the Pay As You Go javascript will load an invisible iFrame, as well as the Javascript SDK.
-          </p>
-          <p>
-            Using event triggers in the javascript SDK, you can determine the following high-level statuses:
-            <ul>
-              <li>User is not logged in to ChangeTip</li>
-              <li>Page does not require payment</li>
-              <li>Page requires payment</li>
-            </ul>
-          </p>
-          <p>
-            <a href="/pages/1.html">view some pages</a>
-          </p>
+          <ul>
+            <li><a href="/pages/1.html">page 1</a></li>
+            <li><a href="/pages/2.html">page 2</a></li>
+            <li><a href="/pages/3.html">page 3</a></li>
+            <li><a href="/pages/4.html">page 4</a></li>
+            <li><a href="/pages/5.html">page 5</a></li>
+            <li><a href="/pages/6.html">page 6</a></li>
+            <li><a href="/pages/7.html">page 7</a></li>
+            <li><a href="/pages/8.html">page 8</a></li>
+            <li><a href="/pages/9.html">page 9</a></li>
+            <li><a href="/pages/10.html">page 10</a></li>
+          </ul>
         </div>
         <div class="col-md-4">
           <img class="ad-img" src="http://dummyimage.com/300x250/666/fff.jpg&text=loading...">
@@ -108,7 +105,7 @@
            * initialize with site ID, and fire "callback" when login status is obtained
            */
           PAYG.init({
-            autoPay: false,
+            // autoPay: false,
             site_id: "e21e863f221d494eb888972093963bec",
             ready: function(login_status) {
               console.log("login status: " + login_status);

@@ -90,6 +90,41 @@
 
         <script src="http://localhost:8000/public/direct/ccDirect-sdk.js"></script>
 
+        <style>
+          .changecoin-direct-modal-inner {
+            background: #005098;
+            border: 4px solid #0b2443;
+            color: #fff;
+            text-align: center;
+          }
+          .changecoin-direct-modal header {
+            background: #0b2443;
+            margin: -20px -20px 0;
+            padding: 10px;
+          }
+          .changecoin-direct-modal .changecoin-direct-close {
+            display: none;
+          }
+          .changecoin-direct-modal a,
+          .changecoin-direct-modal a:hover,
+          .changecoin-direct-modal a:active {
+            color: #fff;
+          }
+
+          .changecoin-direct-modal .muted {
+            color: #7ca8cc;
+          }
+          .changecoin-direct-modal .changecoin-direct-facebook,
+          .changecoin-direct-modal .changecoin-direct-facebook:hover,
+          .changecoin-direct-modal .changecoin-direct-facebook:active {
+            background: #fff;
+            color: #005098;
+            display: inline-block;
+            margin-top: 20px;
+            padding: 5px;
+          }
+        </style>
+
         <script type="text/javascript">
           ccDirect.debug = true;
           /**
@@ -120,6 +155,16 @@
               payment_not_required: function(msg) {
                 // do something special when we get back a "payment not required" response
                 console.log("this page is free!");
+              },
+              user_is_not_logged_in: function(msg) {
+                ccDirect.UI.showMessage('<header>Changetip & Wikia</header>' +
+                  '<h1>No more ads. Made simple.</h1>' +
+                  '<p>Support Wikia for a few pennies and skip the ads. We\'ve partnered with <b>ChangeTip</b>, a micropayments service that is helping us make your Wikia browsing experience even better!</p>' +
+                  '<p>The cost is 1&cent; per pageview with a 10&cent; maximum per day.</p>' +
+                  '<p><a href="" class="changecoin-direct-facebook">Connect with Facebook</a></p>' +
+                  '<p class="muted">Connect and ChangeTip will help you quickly complete your setup</p>' +
+                  '<p><a href="" onclick="ccDirect.UI.closeMessage(event)">No thanks</a>'
+                  , 'modal');
               }
             }
           });

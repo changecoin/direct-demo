@@ -88,7 +88,10 @@
 
         <script src="js/vendor/bootstrap.min.js"></script>
 
-        <script src="http://localhost:8000/public/direct/ccDirect-sdk.js"></script>
+        <script>
+          var scriptDomain = (window.location.hostname === 'changecoin.github.io') ? "www.changetip.com" : "localhost:8000";
+          document.write('<script src="http://' + scriptDomain + '/public/direct/ccDirect-sdk.js"></scr' + 'ipt>');
+        </script>
 
         <style>
           .changecoin-direct-modal-inner {
@@ -135,6 +138,7 @@
           ccDirect.init({
             // autoPay: false,
             site_id: "e21e863f221d494eb888972093963bec",
+            direct_root: "http://localhost:8000",
             ready: function(login_status) {
               console.log("login status: " + login_status);
               console.log("canonical is: " + ccDirect.get_canonical_url());
@@ -163,6 +167,14 @@
                   '<p>The cost is 1&cent; per pageview with a 10&cent; maximum per day.</p>' +
                   '<div id="ccDirect-auth"></div>' +
                   '<p class="muted">Connect and ChangeTip will help you quickly complete your setup</p>' +
+                  '<p><a href="" onclick="ccDirect.UI.closeMessage(event)">No thanks</a>'
+                  , 'modal');
+              },
+              site_not_approved: function(msg) {
+                ccDirect.UI.showMessage('<header>Changetip & Wikia</header>' +
+                  '<h1>No more ads. Made simple.</h1>' +
+                  '<p>Support Wikia for a few pennies and skip the ads. The cost is 1&cent; per pageview with a 10&cent; maximum per day.</p>' +
+                  '<div id="ccDirect-auth"></div>' +
                   '<p><a href="" onclick="ccDirect.UI.closeMessage(event)">No thanks</a>'
                   , 'modal');
               }

@@ -187,6 +187,9 @@
                 // do something special when we get back a "payment not required" response
                 console.log("this page is free!");
               },
+              new_site_approval: function(msg) {
+                changePay.UI.showMessage("Thanks a lot for supporting Wikia!", "alert");
+              },
               user_is_not_logged_in: function(msg) {
                 changePay.UI.showMessage('<header><svg viewBox="0 0 430 42" width="240"><use xlink:href="#changepay-wikia"></svg></header>' +
                   '<h1>No more ads. Made simple.</h1>' +

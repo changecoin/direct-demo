@@ -126,6 +126,13 @@
             margin-top: 20px;
             padding: 5px;
           }
+          .changepay-alert a {
+            text-decoration: underline;
+          }
+          .changepay-message .changepay-close {
+            text-decoration: none;
+          }
+
         </style>
 
         <svg viewBox="0 0 430 42">
@@ -188,7 +195,7 @@
                 console.log("this page is free!");
               },
               new_site_approval: function(msg) {
-                changePay.UI.showMessage("Thanks a lot for supporting Wikia!", "alert");
+                changePay.UI.showMessage('Thanks a lot for supporting Wikia! <a href="http://www.changetip.com/changepay" target="_blank">Complete your setup now.</a>', 'alert');
               },
               user_is_not_logged_in: function(msg) {
                 changePay.UI.showMessage('<header><svg viewBox="0 0 430 42" width="240"><use xlink:href="#changepay-wikia"></svg></header>' +

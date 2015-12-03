@@ -207,6 +207,10 @@ changePay.init({
             '<div id="changePay-auth"></div>' +
             '<p><a href="" onclick="changePay.UI.closeMessage(event)">No thanks</a>'
             , 'modal');
+        },
+        payment_successful: function() {
+            // For user testing, don't show the paid message.
+            return;
         }
     }
 });

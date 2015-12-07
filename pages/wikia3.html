@@ -207,11 +207,23 @@ changePay.init({
             , 'modal');
         },
         site_not_approved: function(msg) {
-            changePay.UI.showMessage('<header><svg viewBox="0 0 430 42" width="240"><use xlink:href="#changepay-wikia"></svg></header>' +
-            '<h1>No more ads. Made simple.</h1>' +
-            '<p>Support Wikia for a few pennies and skip the ads. The cost is 1&cent; per pageview with a 10&cent; maximum per day.</p>' +
-            '<div id="changePay-auth"></div>' +
-            '<p><a href="" onclick="changePay.UI.closeMessage(event)">No thanks</a>'
+            changePay.UI.showMessage('<div class="step1">' +
+            '<img src="../sad-face.png">' +
+            '<h2>You\'re blocking our ads.</h2>' +
+            '<p>We rely on advertisting to pay the bills and ad blockers hurt us. <strong>Would you pay 1c to support us?</strong></p>' +
+            '<footer>' +
+                '<button onclick="step2();">Sure, tell me more!</button>' +
+                '<a href="#">No, I\'d rather not support Wikia.</a>' +
+            '</footer>' +
+            '</div>' +
+            '<div class="step2">' +
+                '<img src="../happy-face.png">' +
+                '<h2>You\'re the best!</h2>' +
+                '<p>We\'re working with ChangePay to enable micropayments on Wikia.<br>Pageviews are 1&cent; each and free after 10&cent; per day.</p>' +
+                '<p><b>Connect with Facebook and ChangePay will follow up.</p>' +
+                '<div id="changePay-auth"></div>' +
+                '<a class="no-thanks" href="" onclick="changePay.UI.closeMessage(event)">Actually, no thanks</a>' +
+            '</div>'
             , 'modal');
         },
         payment_successful: function() {

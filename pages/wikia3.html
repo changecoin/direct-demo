@@ -184,7 +184,16 @@ changePay.init({
             console.log("this page is free!");
         },
         new_site_approval: function(msg) {
-            changePay.UI.showMessage('Thanks a lot for supporting Wikia! <a href="http://www.changetip.com/changepay" target="_blank">Complete your setup now.</a>', 'alert');
+            changePay.UI.showMessage('<div class="step1">' +
+            '<img src="../happy-face.png">' +
+            '<h2>Thank You!</h2>' +
+            '<p>We really apprecate the support. What do you want to do next?</p>' +
+            '<footer>' +
+                '<a href="#" style="margin-right: 40px;" onclick="changePay.UI.closeMessage(event);">Continue reading Wikia and pay later</a>' +
+                '<a href="http://www.changetip.com/changepay" target="_blank">Add payment info now</a>' +
+            '</footer>' +
+            '</div>'
+            , 'modal');
         },
         user_is_not_logged_in: function(msg) {
             changePay.UI.showMessage('<div class="step1">' +

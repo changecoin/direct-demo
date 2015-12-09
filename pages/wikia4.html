@@ -1,0 +1,263 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<head>
+
+<style type="text/css">
+    a.test { font-weight: bold; }
+    body {
+        font-family: "Helvetica Neue", helvetica, sans-serif;
+        margin: 0;
+        overflow: hidden;
+    }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<iframe src="http://muppet.wikia.com/wiki/Muppet_Wiki" style="border: 0; width: 100%; height: 100%"></iframe>
+
+<script src="//www.changetip.com/public/changepay/changePay-sdk.js"></script>
+
+<style>
+.changepay-modal-inner {
+    background: #f6f6f6;
+    border-radius: 5px;
+    border-width: 0;
+    box-shadow: 0 5px 10px rgba(0,0,0,.5);
+    color: #666;
+    font-size: 18px;
+    min-height: auto;
+    padding: 0;
+    text-align: center;
+    width: ;
+}
+.changepay-modal header {
+    background: #0b2443;
+    margin: -20px -20px 0;
+    padding: 10px;
+}
+.changepay-modal .changepay-close {
+    display: none;
+}
+.changepay-modal header {
+    font-size: 32px;
+    font-weight: bold;
+}
+.changepay-modal a,
+.changepay-modal a:hover,
+.changepay-modal a:active {
+    color: #fff;
+}
+
+.changepay-modal .muted {
+    color: #7ca8cc;
+}
+
+.changepay-modal-inner .step1 p {
+    margin: 20px 0 30px;
+}
+
+.changepay-modal-inner img {
+    display: block;
+    height: 120px;
+    margin: 30px auto 10px;
+    width: 120px;
+}
+
+.changepay-modal-inner  .step1 strong {
+    color: #415660;
+    display: block;
+    font-weight: bold;
+}
+
+.changepay-modal h2 {
+    color: #415660;
+    font-size: 30px;
+    margin: 0;
+}
+
+.changepay-modal .step2, .changepay-modal .step3 {
+    display: none;
+}
+
+.changepay-modal .step2 footer > p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.changepay-modal .step2 .input-group {
+    margin: 10px auto 20px;
+}
+
+.changepay-modal .step2 .input-group input {
+    border: 1px solid #415660;
+    font-size: 18px;
+    padding: 9px;
+    width: 300px;
+}
+
+.changepay-modal footer {
+    background: #7fbaab;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #fff;
+    padding: 20px;
+}
+
+.changepay-modal button {
+    background: #415660;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 20px;
+    padding: 10px 15px;
+}
+
+.changepay-modal .step2 .no-thanks {
+    color: #666;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: normal;
+    padding-bottom: 10px;
+}
+
+.changepay-modal .changepay-facebook,
+.changepay-modal .changepay-facebook:hover,
+.changepay-modal .changepay-facebook:active {
+    background: #fff;
+    color: #005098;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 5px;
+}
+.changepay-alert a {
+    text-decoration: underline;
+}
+.changepay-message .changepay-close {
+    text-decoration: none;
+}
+</style>
+
+<script>
+function changeStep(step) {
+    event.preventDefault();
+    $('.changepay-modal .step1, .changepay-modal .step2, .changepay-modal .step3').hide();
+    $('.changepay-modal .step' + step).show();
+}
+
+changePay.init({
+    autoPay: true,
+    site_id: "e21e863f221d494eb888972093963bec",
+    changepay_root: "http://www.changetip.com",
+    ready: function(login_status) {
+        console.log("login status: " + login_status);
+        console.log("canonical is: " + changePay.get_canonical_url());
+    },
+    paid: function(status_code, msg) {
+        console.log(status_code, "You are paid up, or no payment is required!");
+    },
+    unpaid: function(status_code, msg) {
+        console.log(status_code, "Payment couldn't be made for some reason.");
+    },
+    listeners: {
+        payment_already_made: function(msg) {
+            // hide ads
+            console.log("you already paid for this one");
+        },
+        payment_not_required: function(msg) {
+            // hide ads
+            console.log("this page is free!");
+        },
+        new_site_approval: function(msg) {
+            return;
+        },
+        user_is_not_logged_in: function(msg) {
+            changePay.UI.showMessage('<div class="step1">' +
+            '<img src="../sad-face.png">' +
+            '<h2>You\'re blocking our ads.</h2>' +
+            '<p>We rely on advertisting to pay the bills and ad blockers hurt us. <strong>Would you pay 1&cent; to support us?</strong></p>' +
+            '<footer>' +
+                '<button onclick="changeStep(2);">Sure, tell me more!</button>' +
+                '<a href="#">No, I\'d rather not support Wikia.</a>' +
+            '</footer>' +
+            '</div>' +
+            '<div class="step2">' +
+                '<img src="../happy-face.png">' +
+                '<h2>Awesome! Here\'s the deal:</h2>' +
+                '<p>We\'re working with ChangePay to enable micropayments on Wikia.<br>Pageviews are 1&cent; each and free after 10&cent; per day.</p>' +
+                '<footer>' +
+                    '<p><b>No need to pay right now, but ChangeTip will need to contact you:</p>' +
+                    '<form onsubmit="changeStep(3);">' +
+                    '<div class="input-group">' +
+                    '<input type="text" placeholder="you@email.com"><button onclick="changeStep(3);">Support Us!</button>' +
+                    '</div>' +
+                    '</form>' +
+                    '<a class="no-thanks" href="" onclick="changePay.UI.closeMessage(event)">Actually, no thanks</a>' +
+                '</footer>' +
+            '</div>' +
+            '<div class="step3">' +
+                '<img src="../happy-face.png">' +
+                '<h2>Thank You!</h2>' +
+                '<p>We really apprecate the support. What do you want to do next?</p>' +
+                '<footer>' +
+                    '<a href="#" style="margin-right: 40px;" onclick="changePay.UI.closeMessage(event);">Continue reading Wikia and pay later</a>' +
+                    '<a href="changepay.html" target="_blank">Add payment info now</a>' +
+                '</footer>' +
+            '</div>'
+            , 'modal');
+        },
+        site_not_approved: function(msg) {
+            changePay.UI.showMessage('<div class="step1">' +
+            '<img src="../sad-face.png">' +
+            '<h2>You\'re blocking our ads.</h2>' +
+            '<p>We rely on advertisting to pay the bills and ad blockers hurt us. <strong>Would you pay 1&cent; to support us?</strong></p>' +
+            '<footer>' +
+                '<button onclick="changeStep(2);">Sure, tell me more!</button>' +
+                '<a href="#">No, I\'d rather not support Wikia.</a>' +
+            '</footer>' +
+            '</div>' +
+            '<div class="step2">' +
+                '<img src="../happy-face.png">' +
+                '<h2>Awesome! Here\'s the deal:</h2>' +
+                '<p>We\'re working with ChangePay to enable micropayments on Wikia.<br>Pageviews are 1&cent; each and free after 10&cent; per day.</p>' +
+                '<footer>' +
+                    '<p><b>No need to pay right now, but ChangeTip will need to contact you:</p>' +
+                    '<form onsubmit="changeStep(3);">' +
+                    '<div class="input-group">' +
+                    '<input type="text" placeholder="you@email.com"><button onclick="changeStep(3);">Support Us!</button>' +
+                    '</div>' +
+                    '</form>' +
+                    '<a class="no-thanks" href="" onclick="changePay.UI.closeMessage(event)">Actually, no thanks</a>' +
+                '</footer>' +
+            '</div>' +
+            '<div class="step3">' +
+                '<img src="../happy-face.png">' +
+                '<h2>Thank You!</h2>' +
+                '<p>We really apprecate the support. What do you want to do next?</p>' +
+                '<footer>' +
+                    '<a href="#" style="margin-right: 40px;" onclick="changePay.UI.closeMessage(event);">Continue reading Wikia and pay later</a>' +
+                    '<a href="changepay.html" target="_blank">Add payment info now</a>' +
+                '</footer>' +
+            '</div>'
+            , 'modal');
+        },
+        payment_successful: function() {
+            // For user testing, don't show the paid message.
+            return;
+        }
+    }
+});
+</script>
+
+</body>
+</html>
+
+
+
+

@@ -308,11 +308,13 @@
 };
 </script>
 
-<div class="changepay-hero clearfix">
+<div class="changepay-hero clearfix" style="background-color: #ffedcd;">
+<!--
     <div class="col-xs-4">
         <div class="pocket-coin changepay-hero-icon"><span class="currency-usd"></span></div>
         0.00 balance
     </div>
+-->
     <!--
     <div class="col-xs-4">
         <div class="fa fa-share changepay-hero-icon"></div>
@@ -323,19 +325,26 @@
         42 ads blocked
     </div>
     -->
+    <!--
+    <div class="col-xs-3" style="background: url(https://www.changetip.com/public/img/wikia.svg); background-repeat: no-repeat; background-size: 150px; background-position: 50% 0; min-height: 100px;"></div>
+    -->
+    <div class="col-xs-9">
+      <h2 style="margin: 0; text-transform: uppercase; font-size: 20px; font-weight: bold;">One last step!</h2>
+      <p style="font-size: 14px; margin-top: 6px;">Deposit money into your ChangePay account and we'll transfer 1&cent; to Wikia on every pageview (with a maximum of 10 cents per day).</p></div>
 </div>
 
 <div class="container">
+<!--
     <div class="thank-you">
         <p class="lead">Directly support the websites you love and enjoy a better browsing experience.</p>
         <p>For only 1 cent a page you're getting rid of ads (and helping the web by doing it). You can browse
         ad-free on multiple sites so you get to choose which sites you're supporting directly. Tell us what sites
         you want and we'll go get those, too. Be the change.</p>
     </div>
+-->
+    <h3>Deposit</h3>
 
-    <h3>Top Up</h3>
-
-    <p>Your balance is looking good, but you might want to add more money soon.</p>
+    <p>Use a debit card to fund your account now.</p>
 
 
     <div ng-controller="PaymentsController">
@@ -350,8 +359,11 @@
                             <div class="col-sm-2">
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="currency-usd"></span></span>
-                                    <input type="number" class="form-control" placeholder="(10 minimum)" min="10" max="100" ng-model="amount" required>
+                                    <input type="number" class="form-control" placeholder="5 minimum" min="10" max="100" ng-model="amount" required>
                                 </div>
+                            </div>
+                            <div class="col-sm-8">
+                              <div class="form-control-static small" style="padding-top: 10px;"><div class="fa fa-info-circle"></div> Because of the transaction cost of debit cards, we require a minimum deposit of $5.</div>
                             </div>
                         </div>
                     </div>
@@ -433,7 +445,7 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-2">
-                                            <button class="btn btn-default" onclick="return false;">Top Up</button>
+                                            <button class="btn btn-default" onclick="return false;">Deposit</button>
                                         </div>
                                     </div>
                                 </div>
@@ -455,7 +467,7 @@
             </td>
             <td>1 cent per pageview, 10 cent daily maximum</td>
             <td class="disable">
-                <button class="btn btn-default">Disable</button>
+                <a href="#">Disable</a>
             </td>
         </tr>
     </table>

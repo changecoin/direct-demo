@@ -58,6 +58,7 @@
 }
 
 .changepay-modal-inner .step1 p {
+    font-size: 16px;
     margin: 20px 0 30px;
 }
 
@@ -97,6 +98,7 @@
     border: 1px solid #415660;
     font-size: 18px;
     padding: 9px;
+    width: 250px;
 }
 
 .changepay-modal footer {
@@ -169,12 +171,8 @@
     padding: 10px 15px;
 }
 
-.changepay-modal .step2 .no-thanks {
-    color: #666;
-    display: inline-block;
-    font-size: 12px;
-    font-weight: normal;
-    padding-bottom: 10px;
+.changepay-modal .no-thanks {
+    font-size: 14px;
 }
 
 .changepay-modal .changepay-facebook,
@@ -231,7 +229,8 @@ changePay.init({
             setTimeout(function() {
             changePay.UI.showMessage('<div class="step1">' +
             '<h2>Ad-blocking hurts us.</h2>' +
-            '<p>Typically, we\'re paid by our advertisers.<br/>If you don\'t want them to pay us, would you help us by paying:<br /><strong>1&cent; per pageview and free after 10 pageviews?</strong></p>' +
+            '<p>Typically, we\'re paid by our advertisers.<br/>If you don\'t want them to pay us, would you help us by paying:<br /><strong>1&cent; per pageview and free after 10 pageviews per day?</strong></p>' +
+            '<p>It\'s better than a subscription because you only pay when you visit.</p>' +
             '<footer>' +
                 '<div class="footer-item">' +
                     '<div class="footer-face">' +
@@ -251,24 +250,10 @@ changePay.init({
                     '</div>' +
                     '<div class="footer-answer">NO.</div>' +
                     '<div class="footer-action">' +
-                        '<a href="#">No, I\'d rather not support Wikia.</a>' +
+                        '<a href="#" class="no-thanks">No, I\'d rather not support Wikia.</a>' +
                     '</div>' +
                 '</div>' +
             '</footer>' +
-            '</div>' +
-            '<div class="step2">' +
-                '<img src="../happy-face.png">' +
-                '<h2>Awesome! Here\'s the deal:</h2>' +
-                '<p>We\'re working with ChangePay to enable micropayments on Wikia.<br>Pageviews are 1&cent; each and free after 10&cent; per day.</p>' +
-                '<footer>' +
-                    '<p><b>No need to pay right now, but ChangeTip will need to contact you:</p>' +
-                    '<form onsubmit="changeStep(3);">' +
-                    '<div class="input-group">' +
-                    '<input type="text" placeholder="you@email.com"><button onclick="changeStep(3);">Support Us!</button>' +
-                    '</div>' +
-                    '</form>' +
-                    '<a class="no-thanks" href="" onclick="changePay.UI.closeMessage(event)">Actually, no thanks</a>' +
-                '</footer>' +
             '</div>' +
             '<div class="step3">' +
                 '<img src="../happy-face.png">' +
@@ -286,7 +271,8 @@ changePay.init({
             setTimeout(function() {
             changePay.UI.showMessage('<div class="step1">' +
             '<h2>Ad-blocking hurts us.</h2>' +
-            '<p>Typically, we\'re paid by our advertisers.<br/>If you don\'t want them to pay us, would you help us by paying:<br /><strong>1&cent; per pageview and free after 10 pageviews?</strong></p>' +
+            '<p>Typically, we\'re paid by our advertisers.<br/>If you don\'t want them to pay us, would you help us by paying:<br /><strong>1&cent; per pageview and free after 10 pageviews per day?</strong></p>' +
+            '<p>It\'s better than a subscription because you only pay when you visit.</p>' +
             '<footer>' +
                 '<div class="footer-item">' +
                     '<div class="footer-face">' +
@@ -306,24 +292,10 @@ changePay.init({
                     '</div>' +
                     '<div class="footer-answer">NO.</div>' +
                     '<div class="footer-action">' +
-                        '<a href="#">No, I\'d rather not support Wikia.</a>' +
+                        '<a href="#" class="no-thanks">No, I\'d rather not support Wikia.</a>' +
                     '</div>' +
                 '</div>' +
             '</footer>' +
-            '</div>' +
-            '<div class="step2">' +
-                '<img src="../happy-face.png">' +
-                '<h2>Awesome! Here\'s the deal:</h2>' +
-                '<p>We\'re working with ChangePay to enable micropayments on Wikia.<br>Pageviews are 1&cent; each and free after 10&cent; per day.</p>' +
-                '<footer>' +
-                    '<p><b>No need to pay right now, but ChangeTip will need to contact you:</p>' +
-                    '<form onsubmit="changeStep(3);">' +
-                    '<div class="input-group">' +
-                    '<input type="text" placeholder="you@email.com"><button onclick="changeStep(3);">Support Us!</button>' +
-                    '</div>' +
-                    '</form>' +
-                    '<a class="no-thanks" href="" onclick="changePay.UI.closeMessage(event)">Actually, no thanks</a>' +
-                '</footer>' +
             '</div>' +
             '<div class="step3">' +
                 '<img src="../happy-face.png">' +

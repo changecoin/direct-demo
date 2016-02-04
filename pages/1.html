@@ -94,7 +94,7 @@
         </script>
 
         <style>
-          .changepay-modal-inner {
+         /* .changepay-modal-inner {
             background: #005098;
             border: 4px solid #0b2443;
             color: #fff;
@@ -131,7 +131,7 @@
           }
           .changepay-message .changepay-close {
             text-decoration: none;
-          }
+          }*/
 
         </style>
 
@@ -171,8 +171,8 @@
            */
           changePay.init({
             // autoPay: false,
-            site_id: "e21e863f221d494eb888972093963bec",
-            changepay_root: "http://www.changetip.com",
+            site_id: "ec3938a75edd441ca427514dac900159",
+            changepay_root: "http://localhost:8000",
             ready: function(login_status) {
               console.log("login status: " + login_status);
               console.log("canonical is: " + changePay.get_canonical_url());
@@ -186,35 +186,35 @@
               $(".ad-img").attr("src", "http://dummyimage.com/300x250/8c0000/fff.jpg&text=advertisement");
             },
             listeners: {
-              payment_already_made: function(msg) {
-                // show a fun message telling the user they've already paid for this URL
-                console.log("you already paid for this one");
-              },
-              payment_not_required: function(msg) {
-                // do something special when we get back a "payment not required" response
-                console.log("this page is free!");
-              },
-              new_site_approval: function(msg) {
-                changePay.UI.showMessage('Thanks a lot for supporting Wikia! <a href="http://www.changetip.com/changepay" target="_blank">Complete your setup now.</a>', 'alert');
-              },
-              user_is_not_logged_in: function(msg) {
-                changePay.UI.showMessage('<header><svg viewBox="0 0 430 42" width="240"><use xlink:href="#changepay-wikia"></svg></header>' +
-                  '<h1>No more ads. Made simple.</h1>' +
-                  '<p>Support Wikia for a few pennies and skip the ads. We\'ve partnered with <b>ChangePay</b>, a micropayments service that is helping us make your Wikia browsing experience even better!</p>' +
-                  '<p>The cost is 1&cent; per pageview with a 10&cent; maximum per day.</p>' +
-                  '<div id="changePay-auth"></div>' +
-                  '<p class="muted">Connect and ChangePay will help you quickly complete your setup</p>' +
-                  '<p><a href="" onclick="changePay.UI.closeMessage(event)">No thanks</a>'
-                  , 'modal');
-              },
-              site_not_approved: function(msg) {
-                changePay.UI.showMessage('<header><svg viewBox="0 0 430 42" width="240"><use xlink:href="#changepay-wikia"></svg></header>' +
-                  '<h1>No more ads. Made simple.</h1>' +
-                  '<p>Support Wikia for a few pennies and skip the ads. The cost is 1&cent; per pageview with a 10&cent; maximum per day.</p>' +
-                  '<div id="changePay-auth"></div>' +
-                  '<p><a href="" onclick="changePay.UI.closeMessage(event)">No thanks</a>'
-                  , 'modal');
-              }
+              // payment_already_made: function(msg) {
+              //   // show a fun message telling the user they've already paid for this URL
+              //   console.log("you already paid for this one");
+              // },
+              // // payment_not_required: function(msg) {
+              // //   // do something special when we get back a "payment not required" response
+              // //   console.log("this page is free!");
+              // // },
+              // new_site_approval: function(msg) {
+              //   changePay.UI.showMessage('Thanks a lot for supporting Wikia! <a href="http://www.changetip.com/changepay" target="_blank">Complete your setup now.</a>', 'alert');
+              // },
+              // user_is_not_logged_in: function(msg) {
+              //   changePay.UI.showMessage('<header><svg viewBox="0 0 430 42" width="240"><use xlink:href="#changepay-wikia"></svg></header>' +
+              //     '<h1>No more ads. Made simple.</h1>' +
+              //     '<p>Support Wikia for a few pennies and skip the ads. We\'ve partnered with <b>ChangePay</b>, a micropayments service that is helping us make your Wikia browsing experience even better!</p>' +
+              //     '<p>The cost is 1&cent; per pageview with a 10&cent; maximum per day.</p>' +
+              //     '<div id="changePay-auth"></div>' +
+              //     '<p class="muted">Connect and ChangePay will help you quickly complete your setup</p>' +
+              //     '<p><a href="" onclick="changePay.UI.closeMessage(event)">No thanks</a>'
+              //     , 'modal');
+              // },
+              // site_not_approved: function(msg) {
+              //   changePay.UI.showMessage('<header><svg viewBox="0 0 430 42" width="240"><use xlink:href="#changepay-wikia"></svg></header>' +
+              //     '<h1>No more ads. Made simple.</h1>' +
+              //     '<p>Support Wikia for a few pennies and skip the ads. The cost is 1&cent; per pageview with a 10&cent; maximum per day.</p>' +
+              //     '<div id="changePay-auth"></div>' +
+              //     '<p><a href="" onclick="changePay.UI.closeMessage(event)">No thanks</a>'
+              //     , 'modal');
+              // }
             }
           });
 

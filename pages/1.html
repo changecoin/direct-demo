@@ -39,7 +39,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">ChangePay Demo</a>
+          <a class="navbar-brand" href="index.html">ChangeTip Contribute Demo</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 <!--           <form class="navbar-form navbar-right" role="form">
@@ -90,7 +90,7 @@
 
         <script>
           var scriptDomain = (window.location.hostname === 'changecoin.github.io') ? "www.changetip.com" : "localhost:8000";
-          document.write('<script src="//' + scriptDomain + '/public/changepay/changePay-sdk.js"></scr' + 'ipt>');
+          document.write('<script src="//' + scriptDomain + '/public/contribute/contribute-sdk.js"></scr' + 'ipt>');
         </script>
 
         <style>
@@ -162,20 +162,21 @@
           </defs>
         </svg>
 
+
         <script type="text/javascript">
-          changePay.debug = true;
+          contribute.debug = true;
           /**
-           * changePay.init(site_id, callback)
+           * contribute.init(site_id, callback)
            *
            * initialize with site ID, and fire "callback" when login status is obtained
            */
-          changePay.init({
+          contribute.init({
             // autoPay: false,
             site_id: "ec3938a75edd441ca427514dac900159",
-            changepay_root: "http://localhost:8000",
+            contribute_root: "http://localhost:8000",
             ready: function(login_status) {
               console.log("login status: " + login_status);
-              console.log("canonical is: " + changePay.get_canonical_url());
+              console.log("canonical is: " + contribute.get_canonical_url());
             },
             paid: function(status_code, msg) {
               console.log(status_code, "You are paid up, or no payment is required!");

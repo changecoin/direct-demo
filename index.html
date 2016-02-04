@@ -27,9 +27,9 @@
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
     <body>
-    <iframe width="800" height="800" src="http://localhost:8000/contribute/publishers/sites/add/">
+<!--     <iframe width="800" height="800" src="http://localhost:8000/contribute/publishers/sites/add/">
     </iframe>
-    <script>
+ -->    <script>
     window.addEventListener("message", receiveMessage, false);
 
     function receiveMessage(event) {
@@ -126,7 +126,7 @@
           contribute.init({
             autoPay: true,
             site_id: "e21e863f221d494eb888972093963bec",
-            contribute_root: "http://localhost:8000",
+            contribute_root: "http://www.changetip.com",
             ready: function(login_status) {
               console.log("login status: " + login_status);
               console.log("canonical is: " + contribute.get_canonical_url());
